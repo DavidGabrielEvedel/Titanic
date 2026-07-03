@@ -1,9 +1,10 @@
 Titanic Survival Prediction using Machine Learning
 
 A complete end-to-end Machine Learning project built using the Titanic dataset.
+
 This project demonstrates the complete ML workflow from data exploration to deployment-ready prediction.
 
- Features
+Features
 
 - Exploratory Data Analysis
 - Missing Value Handling
