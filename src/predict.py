@@ -5,13 +5,16 @@ model = joblib.load("models/logistic_model.pkl")
 print("=" * 50)
 print("        TITANIC SURVIVAL PREDICTOR            ")
 print("=" * 50)
-pclass = int(input("Passenger Class (1/2/3): "))
-sex = input("Sex (male/female): ").strip().lower()
-age = float(input("Age: "))
-sibsp = int(input("Number of Siblings/Spouses: "))
-parch = int(input("Number of Parents/Children: "))
-fare = float(input("Fare: "))
-embarked = input("Embarked (C/Q/S): ").strip().upper()
+try:
+ pclass = int(input("Passenger Class (1/2/3): "))
+ sex = input("Sex (male/female): ").strip().lower()
+ age = float(input("Age: "))
+ sibsp = int(input("Number of Siblings/Spouses: "))
+ parch = int(input("Number of Parents/Children: "))
+ fare = float(input("Fare: "))
+ embarked = input("Embarked (C/Q/S): ").strip().upper()
+except ValueError:
+    print("Invalid input. Please enter correct data types only!")
 family_size = sibsp + parch + 1
 is_alone = 1 if family_size == 1 else 0
 sex = 1 if sex == "female" else 0
@@ -41,5 +44,9 @@ else:
 
 print(f"Survival Probability: {probability[0][1] * 100:.2f}%")
 print(f"Death Probability: {probability[0][0] * 100:.2f}%")
+
+confidence = max(probability[0]) * 100
+
+print(f"Model Confidence: {confidence:.2f}%")
 
 print("=" * 50)
