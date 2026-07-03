@@ -1,0 +1,10 @@
+import pandas as pd
+df = pd.read_csv("data/titanic.csv")
+print(df.info())
+print(df.describe())
+print(df.isnull().sum())
+df.drop("Cabin", axis=1, inplace=True)
+df["Age"]=df["Age"].fillna(df["Age"].median())
+df["Embarked"] = df["Embarked"].fillna(df["Embarked"].mode()[0])
+print("\nMissing Values After Cleaning:\n")
+print(df.isnull().sum())
